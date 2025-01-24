@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Admin Panel</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Admin Panel</h1>
+        <h2>Registered Users</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.username }}</td>
+                    <td>
+                        <a href="{{ url_for('edit_user', user_id=user.id) }}">Edit</a>
+                        <a href="{{ url_for('delete_user', user_id=user.id) }}">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h2>Shopping Lists</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Item</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in shopping_lists %}
+                <tr>
+                    <td>{{ item.user.username }}</td>
+                    <td>{{ item.item_name }}</td>
+                    <td>{{ 'Purchased' if item.is_purchased else 'Not Purchased' }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+</body>
+</html>
