@@ -52,10 +52,7 @@ def login_required(f):
             return redirect(url_for('login'))
         return f(*args, **kwargs)
     return decorated_function
-Você pode copiar e colar este código no seu arquivo utils/auth.py.
-
-Valeu demais 
-De nada! Se precisar de mais alguma coisa, é só falar. Boa sorte com o deploy!
+Revise este código para garantir que não haja caracteres invisíveis ou especiais. Se ainda encontrar o erro, tente abrir o arquivo em um editor de texto que mostre caracteres invisíveis e remova-os.
 
 Code
 Issues
@@ -115,4 +112,4 @@ def get_current_user():
         db.close()
         return user
     return None
-    
+        
