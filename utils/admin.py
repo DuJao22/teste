@@ -1,5 +1,5 @@
 from flask import session, redirect, url_for, flash
-from database import get_db
+from utils.auth import get_db
 
 def get_all_users():
     db = get_db()
